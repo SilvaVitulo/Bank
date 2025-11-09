@@ -15,5 +15,12 @@ public class Transaction {
 
     //Методы:
     //- Конструктор для создания транзакции.
-
+    public Transaction(String id, BigDecimal amount, String type, LocalDateTime date, BankAccount sourceAccount, BankAccount targetAccount) {
+        this.id = id;
+        this.amount = amount;
+        this.type = type;
+        this.date = date;
+        this.sourceAccount = sourceAccount;
+        this.targetAccount = targetAccount;
+    }
 }

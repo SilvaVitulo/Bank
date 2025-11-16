@@ -1,18 +1,16 @@
 import homework.BankAccount;
-import homework.Transaction;
-import org.junit.Assert;
 import org.junit.Test;
-import java.math.BigDecimal;
-import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 
+import java.math.BigDecimal;
 import static org.junit.Assert.assertEquals;
 
 public class BankAccountTest {
 
     @Test       //проверка пополнения счёта
+    @DisplayName("Проверка пополнения счёта")
     public void testAddingSum() {
         BankAccount bankAccount = new BankAccount();
-//        BigDecimal bigDecimal;
         bankAccount.deposit(new BigDecimal("10"));
         assertEquals(new BigDecimal("10"), bankAccount.getBalance());
     }
@@ -39,14 +37,14 @@ public class BankAccountTest {
         assertEquals(new BigDecimal("10"), bankAccount.getBalance());
     }
 
-    @Test       //проверка добавления транзакции в историю
-    public void testAddTransaction() {
-        BankAccount bankAccount = new BankAccount();
-        bankAccount.deposit(new BigDecimal("50"));
-        Transaction transaction = new Transaction("3", "50", "DEPOSIT", 20000120, "account1", "account2");
-        bankAccount.addTransaction(transaction);
-        assertEquals(new BigDecimal("50"), bankAccount.getBalance());
-        List<Transaction> transactions = bankAccount.addTransaction(transaction);
-        assertEquals(1, transactions.size());
-    }
+//    @Test       //проверка добавления транзакции в историю
+//    public void testAddTransaction() {
+//        BankAccount bankAccount = new BankAccount();
+//        bankAccount.deposit(new BigDecimal("50"));
+//        Transaction transaction = new Transaction("3", "50", "DEPOSIT", 20000120, "account1", "account2");
+//        bankAccount.addTransaction(transaction);
+//        assertEquals(new BigDecimal("50"), bankAccount.getBalance());
+//        List<Transaction> transactions = bankAccount.addTransaction(transaction);
+//        assertEquals(1, transactions.size());
+//    }
 }

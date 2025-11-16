@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BankAccountTest {
-
+///
     @Test
     @DisplayName("Тест проверки пополнения счёта")
     public void testAddingSum() {

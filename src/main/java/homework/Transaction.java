@@ -23,4 +23,5 @@ public class Transaction {
         this.sourceAccount = sourceAccount;
         this.targetAccount = targetAccount;
     }
+
 }

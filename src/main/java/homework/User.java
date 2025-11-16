@@ -2,7 +2,6 @@ package homework;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class User {
     //Поля:
@@ -10,26 +9,33 @@ public class User {
     private String name;                  //(String): имя пользователя.
     private List<BankAccount> accounts;   //(List<BankAccount>): список счетов пользователя.
 
-    //Методы:
-    //добавление нового счета пользователю:
-    public void addAccount(String account) {
-        Scanner console = new Scanner(System.in);
-        System.out.print("Введите имя нового пользователя: ");
-        name = console.nextLine();
-        name = new String(name);
-        System.out.println("Введите ID счёта пользователя: ");
-        id = console.nextLine();
-        id = new String(id);
-        addAccount(account);
-        accounts = new ArrayList<>(accounts);
+    //Конструктор:
+    public User(String id, String name){
+        this.id = id;
+        this.name = name;
+        this.accounts = new ArrayList<>();
     }
 
-    public void deleteAccount(String account) {
-
+    //Методы:
+    //добавление нового счета пользователю:
+    public void addAccount(BankAccount newAccount) {
+        accounts.add(newAccount);
+    }
+    //удаление пользователя
+    public void deleteAccount() {
+        accounts.remove(this);
     }
 
     //возвращает список счетов пользователя:
-    public void getAccounts(){
-        accounts = new ArrayList<BankAccount>();
+    public List<BankAccount> getAccounts(){
+        return accounts; //возврат текущего списка счетов
     }
 }
+
+
+//        BankAccount newAccount = new BankAccount();
+//        Scanner console = new Scanner(System.in);
+//        System.out.print("Введите имя нового пользователя: ");
+//        name = console.nextLine();
+//        System.out.println("Введите ID счёта пользователя: ");
+//        id = console.nextLine();

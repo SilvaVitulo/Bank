@@ -63,3 +63,8 @@
     2. `transfer(BankAccount source, BankAccount target, BigDecimal amount)`: переводит средства между счетами (с проверкой на достаточность средств).
     3. `getTransactionHistory(BankAccount account)`: возвращает историю транзакций для указанного счета.
     4. `getTotalBalance(User user)`: возвращает общий баланс всех счетов пользователя.
+
+## **3. Дополнительные требования**
+
+- Используйте **Maven**  для управления зависимостями.
+- Используйте **Git**  для версионирования кода и отправки Pull Request.

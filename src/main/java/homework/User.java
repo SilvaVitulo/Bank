@@ -22,8 +22,8 @@ public class User {
         accounts.add(newAccount);
     }
     //удаление пользователя
-    public void deleteAccount() {
-        accounts.remove(this);
+    public void deleteAccount(BankAccount account) {
+        accounts.remove(account);
     }
 
     //возвращает список счетов пользователя:
@@ -31,11 +31,3 @@ public class User {
         return accounts; //возврат текущего списка счетов
     }
 }
-
-
-//        BankAccount newAccount = new BankAccount();
-//        Scanner console = new Scanner(System.in);
-//        System.out.print("Введите имя нового пользователя: ");
-//        name = console.nextLine();
-//        System.out.println("Введите ID счёта пользователя: ");
-//        id = console.nextLine();

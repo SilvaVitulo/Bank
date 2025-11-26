@@ -1,16 +1,21 @@
 package homework;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class BankAccount {
     //Поля:
     private String accountNumber;             //(String): уникальный номер счета.
-    private BigDecimal balance = BigDecimal.ZERO;               //(BigDecimal): текущий баланс счета.
+    private BigDecimal balance = BigDecimal.ZERO;  //(BigDecimal): текущий баланс счета.
     private User owner;                       //(User): владелец счета.
     private List<Transaction> transactions;   //(List<Transaction>): история транзакций.
 
+    public BankAccount(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public BankAccount(){
+    }
 
     //Методы:
     //- пополнение счета:

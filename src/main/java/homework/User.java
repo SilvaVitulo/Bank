@@ -21,13 +21,14 @@ public class User {
     public void addAccount(BankAccount newAccount) {
         accounts.add(newAccount);
     }
-    //удаление пользователя
-    public void deleteAccount(BankAccount account) {
-        accounts.remove(account);
-    }
 
     //возвращает список счетов пользователя:
     public List<BankAccount> getAccounts(){
         return accounts; //возврат текущего списка счетов
+    }
+
+    //удаление пользователя
+    public void deleteAccount(BankAccount account) {
+        accounts.remove(account);
     }
 }

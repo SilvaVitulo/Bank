@@ -12,23 +12,24 @@ public class BankAccount {
     private User owner;                       //(User): владелец счета.
     private List<Transaction> transactions = new ArrayList<>();   //(List<Transaction>): история транзакций.
 
-    public BankAccount(String accountNumber) {
+    public BankAccount(String accountNumber, User owner) {
         this.accountNumber = accountNumber;
+        this.owner = owner;
     }
 
     public BankAccount(){
     }
 
+
     //Методы:
     //- пополнение счета:
     public void deposit(BigDecimal amount) {
         balance = balance.add(amount);
-//        addTransaction(new Transaction("123" , amount, "type", ));
     }
 
     //- снятие средств со счета (с проверкой на достаточность средств):
     public void withdraw(BigDecimal amount) {
-        if (balance.compareTo(amount) <= 0) {
+        if (balance.compareTo(amount) < 0) {
             throw new IllegalArgumentException("Баланс недостаточен для снятия со счёта! (уменьшите сумму или внесите деньги на счёт)");
         }
         balance = balance.subtract(amount);
@@ -51,5 +52,9 @@ public class BankAccount {
 
     public String getAccountNumber() {
         return accountNumber;
+    }
+
+    public User getOwner() {
+        return owner;
     }
 }

@@ -14,7 +14,8 @@ public class BankAccountTest {
     @DisplayName("Тест проверки пополнения счёта")
     public void testAddingSum() {
         //Arrange
-        BankAccount bankAccount = new BankAccount("account1");
+        User user = new User("U123", "Bob");
+        BankAccount bankAccount = new BankAccount("account1", user);
         bankAccount.deposit(new BigDecimal("10"));
         //Assert
         assertEquals(new BigDecimal("10"), bankAccount.getBalance());
@@ -24,7 +25,8 @@ public class BankAccountTest {
     @DisplayName("Тест проверки успешного вывода средств")
     public void testWithdrawSuccess() {
         //Arrange
-        BankAccount bankAccount = new BankAccount("account1");
+        User user = new User("U123", "Bob");
+        BankAccount bankAccount = new BankAccount("account1", user);
         bankAccount.deposit(new BigDecimal("50"));
         //Act
         bankAccount.withdraw(new BigDecimal("25"));
@@ -36,7 +38,8 @@ public class BankAccountTest {
     @DisplayName("Тест проверки вывода средств больше чем есть на депозите")
     public void testWithdrawFailure() {
         //Arrange
-        BankAccount bankAccount = new BankAccount("account1");
+        User user = new User("U123", "Bob");
+        BankAccount bankAccount = new BankAccount("account1", user);
         bankAccount.deposit(new BigDecimal("50"));
         //Assert
         assertThrows(IllegalArgumentException.class, () -> bankAccount.withdraw(new BigDecimal("100")));
@@ -46,7 +49,8 @@ public class BankAccountTest {
     @DisplayName("Тест проверки запроса средств на балансе")
     public void testGetBalance() {
         //Arrange
-        BankAccount bankAccount = new BankAccount("account1");
+        User user = new User("U123", "Bob");
+        BankAccount bankAccount = new BankAccount("account1", user);
         bankAccount.deposit(new BigDecimal("10"));
         //Assert
         assertEquals(new BigDecimal("10"), bankAccount.getBalance());
@@ -56,10 +60,11 @@ public class BankAccountTest {
     @DisplayName("Тест проверки что транзакция корректно сохраняется в истории и баланс не меняется")
     public void testAddTransaction() {
         //Arrange
-        BankAccount bankAccount = new BankAccount("account1");
+        User user = new User("U123", "Bob");
+        BankAccount bankAccount = new BankAccount("account1", user);
         bankAccount.deposit(new BigDecimal("50"));
         //Act
-        Transaction transaction = new Transaction("3", new BigDecimal("50"), "DEPOSIT", LocalDateTime.of(2000,12,1,23,1), new BankAccount("account1"), new BankAccount("account2"));
+        Transaction transaction = new Transaction("3", new BigDecimal("50"), "DEPOSIT", LocalDateTime.of(2000,12,1,23,1), new BankAccount("account1", user), new BankAccount("account2", user));
         bankAccount.addTransaction(transaction);
         //Assert
         assertEquals("Баланс увеличен на сумму 50", new BigDecimal("50"), bankAccount.getBalance());

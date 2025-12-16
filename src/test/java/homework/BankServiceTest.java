@@ -16,13 +16,21 @@ class BankServiceTest {
         //Arrange
         User user = new User("U123", "Bob");
         String accountNumber = "acc123";
+        String accountNumber1 = "bcc123";
+        BankAccount source = new BankAccount(accountNumber, user);
+        BankAccount target = new BankAccount(accountNumber1, user);
+        BigDecimal amount = new BigDecimal("100.00");
         //Act
-        BankService service = null;
+        BankService service = new BankService();
         service.createAccount(user, accountNumber);
+        source.deposit(amount);
+        service.transfer(source, target, amount);
         //Assert
         List<BankAccount> accounts = user.getAccounts();
         assertEquals(1, accounts.size()); // Проверяем, что счет добавился
         assertEquals(accountNumber, accounts.get(0).getAccountNumber()); // Проверяем номер счета
+        assertEquals(amount, accounts.get(0).getBalance());
+        assertEquals(amount, accounts.get(0).getBalance());
     }
 
 //    @Test

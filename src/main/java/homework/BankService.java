@@ -8,7 +8,7 @@ public class BankService {
     //создает новый счет для пользователя:
     public void createAccount(User user, String accountNumber) {
         // Создаем новый банковский счет
-        BankAccount newAccount = new BankAccount(accountNumber);
+        BankAccount newAccount = new BankAccount(accountNumber, user);
         // Добавляем новый счет пользователю
         user.addAccount(newAccount);
     }

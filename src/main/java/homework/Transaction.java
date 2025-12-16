@@ -12,7 +12,6 @@ public class Transaction {
     private final BankAccount sourceAccount;   //(BankAccount): источник транзакции (если применимо).
     private final BankAccount targetAccount;   //(BankAccount): получатель транзакции (если применимо).
 
-
     //Методы:
     //- Конструктор для создания транзакции с проверкой на валидные значения в полях.
     public Transaction(String id, BigDecimal amount, String type, LocalDateTime date, BankAccount sourceAccount, BankAccount targetAccount) {
@@ -20,12 +19,12 @@ public class Transaction {
             throw new IllegalArgumentException("ID транзакции не может быть пустым");
         }
 
-        if (type == null || !type.matches("^(DEPOSIT|WITHDRAWAL|TRANSFER)$")) {
-            throw new IllegalArgumentException("Невалидный тип транзакции");
-        }
-
         if (amount == null || amount.signum() <= 0) {
             throw new IllegalArgumentException("Сумма транзакции должна быть положительным числом");
+        }
+
+        if (type == null || !type.matches("^(DEPOSIT|WITHDRAWAL|TRANSFER)$")) {
+            throw new IllegalArgumentException("Невалидный тип транзакции");
         }
 
         if (date == null) {

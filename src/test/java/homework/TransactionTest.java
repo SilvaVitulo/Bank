@@ -17,9 +17,9 @@ class TransactionTest {
         BigDecimal amount = new BigDecimal("100.00");
         String type = "DEPOSIT";
         LocalDateTime date = LocalDateTime.of(2020, 1, 1, 1, 1);
-        BankAccount sourceAccount = new BankAccount(id);
-        BankAccount targetAccount = new BankAccount(id);
-
+        User user = new User("U123", "Bob");
+        BankAccount sourceAccount = new BankAccount(id, user);
+        BankAccount targetAccount = new BankAccount(id, user);
         Transaction transaction = new Transaction(id, amount, type, date, sourceAccount, targetAccount);
 
         // Проверяем, что поля установлены корректно
